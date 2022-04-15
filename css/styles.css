@@ -8,6 +8,8 @@
 html {
     background-color: #DFDFDF;
     scroll-behavior: smooth;
+    height: 100%;
+    width: 100%;
 }
 
 * {
@@ -77,6 +79,45 @@ body {
     border-radius: 10px;
 }
 
+.header {
+    margin-top: 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    animation: fadeIn 3s;
+    opacity: 1;
+}
+
+.header-img {
+    width: 7rem;
+    height: auto;
+}
+
+.header-img img {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+}
+
+.header h2 {
+    color: #012970;
+    margin-bottom: 0;
+}
+
+.header p {
+    font-size: 1.2rem;
+}
+
+.header p a {
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.header p a:hover {
+    text-decoration: underline;
+}
+
 .footer {
     background-color: #f6f9ff;
     color: #012970;
@@ -121,3 +162,12 @@ body {
         display: flex;
     }
 }
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+       opacity: 1;
+    }
+  }
