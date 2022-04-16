@@ -24,7 +24,9 @@ body {
 
 .navbar {
     display: flex;
-    position: relative;
+    position: fixed;
+    top: 0;
+    width: 100%;
     justify-content: space-between;
     align-items: center;
     background-color: #012970;
@@ -80,7 +82,7 @@ body {
 }
 
 .header {
-    margin-top: 2rem;
+    margin-top: 5rem;
     display: flex;
     flex-direction: column;
     justify-content: center;
