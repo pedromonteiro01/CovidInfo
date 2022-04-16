@@ -35,6 +35,30 @@
         <p>Gives you COVID incidence data for a specific country/city, using <a href="https://rapidapi.com/collection/coronavirus-covid-19" target="_blank">RapidApi</a></p>
       </section>
 
+      <div class="search-covid-data">
+          <div class="search-covid-box-select">
+            <h2>Select the country you want to search</h2>
+            <div class="select-country-form">
+              <select id="cars" name="carlist" form="carform">
+                <option value="volvo">Portugal</option>
+                <option value="saab">Espanha</option>
+                <option value="opel">França</option>
+                <option value="audi">Alemanha</option>
+              </select>
+            </div>
+            <button>Search</button>
+          </div>
+
+          <div class="search-covid-box-coord">
+            <h2>Fill the coords of the country you want to search</h2>
+            <div class="coords-input">
+              <input type="text" placeholder="Lat">
+              <input type="text" placeholder="Long">
+            </div>
+            <button>Search</button>
+          </div>
+      </div>
+
 
       <div class="footer">
         <span>&copy; 2022 - <a href="">Pedro Monteiro</a></span>

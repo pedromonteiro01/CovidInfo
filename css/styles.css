@@ -6,7 +6,7 @@
 }
 
 html {
-    background-color: #DFDFDF;
+    background-color: #fff;
     scroll-behavior: smooth;
     height: 100%;
     width: 100%;
@@ -118,12 +118,64 @@ body {
     text-decoration: underline;
 }
 
+.search-covid-data {
+    width: 100%;
+}
+
+.search-covid-box-select, .search-covid-box-coord {
+    margin: 5rem 0;
+    height: 14rem;
+    width: 80%;
+    margin-left: 10%;
+    margin-right: 10%;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+    border-radius: 6px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.search-covid-box-select h2, .search-covid-box-coord h2{
+    color: #012970;
+}
+
+.search-covid-box-select select {
+    width: 10rem;
+    height: 2rem;
+    border-radius: 3px;
+    background-color: #fff;
+}
+
+.search-covid-box-select button, .search-covid-box-coord button {
+    height: 2rem;
+    width: 5rem;
+    background-color: #fff;
+    border: solid 2px #012970;
+    border-radius: 3px;
+    margin: 2rem 0;
+}
+
+.search-covid-box-select button:hover,  .search-covid-box-coord button:hover {
+    cursor: pointer;
+    color: white;
+    background-color: #012970;
+    transition: all 0.3s ease-in-out;
+}
+
+.search-covid-box-coord input {
+    height: 2rem;
+}
+
+.search-covid-box-coord input:last-child{
+    margin-left: 3rem;
+}
+
 .footer {
     background-color: #f6f9ff;
     color: #012970;
     width: 100%;
     height: 3rem;
-    position: absolute;
     bottom: 0;
     display: flex;
     justify-content: center;
