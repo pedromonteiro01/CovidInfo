@@ -125,6 +125,7 @@ body {
 }
 
 .search-covid-box-select, .search-covid-box-coord {
+    animation: fadeIn 3s;
     margin: 5rem 0;
     height: 14rem;
     width: 80%;
