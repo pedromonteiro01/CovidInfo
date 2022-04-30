@@ -79,7 +79,6 @@ function getData2() {
         .then(response => response.json()).then( json => setData(json))
         .catch(error => console.error(error))
         .finally(() => {
-          document.getElementById("covid-data2").style.display = "block";
           var newCases = document.getElementById('new-cases2');
           var activeCases = document.getElementById('active-cases2');
           var recoveredCases = document.getElementById('recovered-cases2');
@@ -90,6 +89,15 @@ function getData2() {
           var stringifiedData = JSON.stringify(data);
           var parsedData = JSON.parse(stringifiedData);
           const length = Object.keys(parsedData).length;
+          console.log(length)
+          if (length === 0) {
+            document.getElementById("covid-data2").style.display = "none";
+            document.getElementById("country-fail").style.display = "block";
+          }
+          else {
+            document.getElementById("covid-data2").style.display = "block";
+            document.getElementById("country-fail").style.display = "none";
+          }
   
           for (var i = 0; i < length; ++i) {
             var c1 = JSON.stringify(parsedData[i]);

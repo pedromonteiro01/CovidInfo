@@ -3,6 +3,8 @@ package com.covidinfo.frontend;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
+import io.cucumber.java.After;
+import io.cucumber.java.AfterStep;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.When;
@@ -21,18 +23,33 @@ public class FrontendSteps {
         driver.get(url);
     }
 
-    @And("user searches for {string} on the list bar")
-    public void checkCovidData(String local) {
+    @And("I search for {string} on the list bar")
+    public void checkCovidDataOnListBar(String local) {
         driver.findElement(By.className("countriesSelect")).sendKeys(local);
     }
 
-    @And("clicks on the search button")
+    @And("I search for {string}, that is not available, on the search bar")
+    public void checkCovidDataOnSearchBar(String local) {
+        driver.findElement(By.id("country-box")).sendKeys(local);
+    }
+
+    @And("click on the search button")
     public void searchForCovidData() {
         driver.findElement(By.className("search-button")).click();
     }
     
-    @Then("Covid Data is presented at {string}")
+    @Then("Covid Data is presented at {string} section")
     public void seeCovidInformation(String results) {
         assertThat(driver.findElement(By.className("h2-title")).getText(), containsString(results));
+    }
+
+    @Then("I can see that nothing is shown at {string} section")
+    public void seeThatNothingIsShown(String result) {
+        assertThat(driver.findElement(By.id("search-country")).getText(), containsString(result));
+    }
+
+    @After()
+    public void closeBrowser() {
+        driver.quit();
     }
 }

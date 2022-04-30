@@ -43,7 +43,6 @@
             </div>
             <button id="btn-search" class="search-button">Search</button>
             <div class="covid-data" id="covid-data" style="display: none;">
-              <h3 class="covid-title">Covid Data</h3>
               <ul>
                 <li>
                   New Cases
@@ -73,11 +72,14 @@
           </div>
 
           <div class="search-covid-box-coord">
-            <h2>Fill the coords of the country you want to search</h2>
+            <h2 id="search-country">Write the country you want to search</h2>
             <div class="coords-input">
               <input type="text" id="country-box" placeholder="Country">
             </div>
             <button id="btn-text-search">Search</button>
+            <div>
+              <h3 id="country-fail" class="country-fail" style="display: none; color: red; text-align: center;">Country Not Available</h3>
+            </div>
             <div class="covid-data2" id="covid-data2" style="display: none;">
               <ul>
                 <li>
