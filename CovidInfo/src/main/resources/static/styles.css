@@ -31,6 +31,7 @@ body {
     align-items: center;
     background-color: #012970;
     color: white;
+    z-index: 1;
 }
 
 .brand-title {
@@ -127,7 +128,7 @@ body {
 .search-covid-box-select, .search-covid-box-coord {
     animation: fadeIn 3s;
     margin: 5rem 0;
-    height: 14rem;
+    height: 20rem;
     width: 80%;
     margin-left: 10%;
     margin-right: 10%;
@@ -168,6 +169,31 @@ body {
 
 .search-covid-box-coord input {
     height: 2rem;
+}
+
+.covid-data, .covid-data2 {
+    width: 100%;
+}
+
+.covid-data ul, .covid-data2 ul  {
+    display: flex;
+    justify-content: center;
+}
+
+.covid-data ul li, .covid-data2 ul li {
+    width: 8rem;
+    height: 5rem;
+    list-style: none;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+}
+
+.covid-data ul li span, .covid-data2 ul li span {
+    align-items: flex-end;
 }
 
 .footer {

@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+    <head>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css" rel="stylesheet">
+      <link rel="stylesheet" href="styles.css">
+      <script src="script.js" defer></script>
+      <link rel="icon" href="icon.png">
+      <title>CovidInfo</title>
+    </head>
+    <body>
+      <nav class="navbar">
+        <div class="brand-title"><i class="fas fa-virus"></i> CovidInfo</div>
+        <a href="#" class="toggle-button">
+          <span class="bar"></span>
+          <span class="bar"></span>
+          <span class="bar"></span>
+        </a>
+        <div class="navbar-links">
+          <ul>
+            <li><a href="#">Home</a></li>
+            <li><a href="#">Search</a></li>
+            <li><a href="#">Cache</a></li>
+            <li><a href="#">About</a></li>
+          </ul>
+        </div>
+      </nav>
+
+      <section class="header">
+        <div class="header-img">
+          <img src="virus.png" alt="">
+        </div>
+        <h2>CovidInfo</h2>
+        <p>Gives you COVID incidence data for a specific country/territory, using <a href="https://rapidapi.com/collection/coronavirus-covid-19" target="_blank">RapidApi</a></p>
+      </section>
+
+      <div class="search-covid-data">
+          <div class="search-covid-box-select">
+            <h2>Select the country you want to search</h2>
+            <div class="select-country-form">
+              <select id="ageselect" name="countriesList" form="countriesform">
+              </select>
+            </div>
+            <button id="btn-search">Search</button>
+            <div class="covid-data" id="covid-data" style="display: none;">
+              <ul>
+                <li>
+                  New Cases
+                  <span id="new-cases"></span>
+                </li>
+                <li>
+                  Active Cases
+                  <span id="active-cases"></span>
+                </li>
+                <li>Recovered Cases
+                  <span id="recovered-cases"></span>
+                </li>
+                <li>Total Cases
+                  <span id="total-cases"></span>
+                </li>
+                <li>Deaths
+                  <span id="deaths"></span>
+                </li>
+                <li>Total Deaths
+                  <span id="total-deaths"></span>
+                </li>
+                <li>Tests
+                  <span id="tests"></span>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="search-covid-box-coord">
+            <h2>Fill the coords of the country you want to search</h2>
+            <div class="coords-input">
+              <input type="text" id="country-box" placeholder="Country">
+            </div>
+            <button id="btn-text-search">Search</button>
+            <div class="covid-data2" id="covid-data2" style="display: none;">
+              <ul>
+                <li>
+                  New Cases
+                  <span id="new-cases2"></span>
+                </li>
+                <li>
+                  Active Cases
+                  <span id="active-cases2"></span>
+                </li>
+                <li>Recovered Cases
+                  <span id="recovered-cases2"></span>
+                </li>
+                <li>Total Cases
+                  <span id="total-cases2"></span>
+                </li>
+                <li>Deaths
+                  <span id="deaths2"></span>
+                </li>
+                <li>Total Deaths
+                  <span id="total-deaths2"></span>
+                </li>
+                <li>Tests
+                  <span id="tests2"></span>
+                </li>
+              </ul>
+            </div>
+          </div>
+      </div>
+
+
+      <div class="footer">
+        <span>&copy; 2022 - <a href="">Pedro Monteiro</a></span>
+      </div>
+    </body>
+</html>

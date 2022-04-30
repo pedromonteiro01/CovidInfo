@@ -1,77 +1,42 @@
 package com.covidinfo.entity;
 
-import javax.persistence.*;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
 @Entity
 @Table(name = "countries")
 public class Country {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
-
-    @Column(name = "name", nullable = false)
+    private Long id;
     private String name;
-
-    @Column(name = "continent", nullable = false)
-    private String continent;
-
-    @Column(name = "population", nullable = false)
-    private int population;
-
-    @Column(name = "new_cases", nullable = false)
-    private int newCases;
-
-    @Column(name = "active_cases", nullable = false)
-    private int activeCases;
-
-    @Column(name = "recovered_cases", nullable = false)
-    private int recoveredCases;
-
-    @Column(name = "total_cases", nullable = false)
-    private int totalCases;
-
-    @Column(name = "new_deaths", nullable = false)
-    private int newDeaths;
-    
-    @Column(name = "total_deaths", nullable = false)
-    private int totalDeaths;
-
-    @Column(name = "tests", nullable = false)
-    private int tests;
-
-    @Column(name = "day", nullable = false)
-    private int day;
+    private String newCases;
+    private String activeCases;
+    private String recoveredCases;
+    private String totalCases;
+    private String newDeaths;
+    private String totalDeaths;
+    private String totalTests;
 
     public Country() {
     }
 
-    public Country(String name, String continent, int population) {
+    public Country(String name) {
         this.name = name;
-        this.continent = continent;
-        this.population = population;
-    }
+    }   
 
-    public Country(long id, String name, String continent, int population, int newCases, int activeCases, int recoveredCases, int totalCases, int newDeaths, int totalDeaths, int tests, int day) {
-        this.id = id;
+    public Country(String name, String newCases, String activeCases, String recoveredCases, String totalCases, String newDeaths, String totalDeaths, String totalTests) {
         this.name = name;
-        this.continent = continent;
-        this.population = population;
         this.newCases = newCases;
         this.activeCases = activeCases;
         this.recoveredCases = recoveredCases;
         this.totalCases = totalCases;
         this.newDeaths = newDeaths;
         this.totalDeaths = totalDeaths;
-        this.tests = tests;
-        this.day = day;
-    }
-
-    public long getId() {
-        return this.id;
-    }
-
-    public void setId(long id) {
-        this.id = id;
+        this.totalTests = totalTests;
     }
 
     public String getName() {
@@ -82,102 +47,59 @@ public class Country {
         this.name = name;
     }
 
-    public String getContinent() {
-        return this.continent;
-    }
-
-    public void setContinent(String continent) {
-        this.continent = continent;
-    }
-
-    public int getPopulation() {
-        return this.population;
-    }
-
-    public void setPopulation(int population) {
-        this.population = population;
-    }
-
-    public int getNewCases() {
+    public String getNewCases() {
         return this.newCases;
     }
 
-    public void setNewCases(int newCases) {
+    public void setNewCases(String newCases) {
         this.newCases = newCases;
     }
 
-    public int getActiveCases() {
+    public String getActiveCases() {
         return this.activeCases;
     }
 
-    public void setActiveCases(int activeCases) {
+    public void setActiveCases(String activeCases) {
         this.activeCases = activeCases;
     }
 
-    public int getRecoveredCases() {
+    public String getRecoveredCases() {
         return this.recoveredCases;
     }
 
-    public void setRecoveredCases(int recoveredCases) {
+    public void setRecoveredCases(String recoveredCases) {
         this.recoveredCases = recoveredCases;
     }
 
-    public int getTotalCases() {
+    public String getTotalCases() {
         return this.totalCases;
     }
 
-    public void setTotalCases(int totalCases) {
+    public void setTotalCases(String totalCases) {
         this.totalCases = totalCases;
     }
 
-    public int getNewDeaths() {
+    public String getNewDeaths() {
         return this.newDeaths;
     }
 
-    public void setNewDeaths(int newDeaths) {
+    public void setNewDeaths(String newDeaths) {
         this.newDeaths = newDeaths;
     }
 
-    public int getTotalDeaths() {
+    public String getTotalDeaths() {
         return this.totalDeaths;
     }
 
-    public void setTotalDeaths(int totalDeaths) {
+    public void setTotalDeaths(String totalDeaths) {
         this.totalDeaths = totalDeaths;
     }
 
-    public int getTests() {
-        return this.tests;
+    public String getTotalTests() {
+        return this.totalTests;
     }
 
-    public void setTests(int tests) {
-        this.tests = tests;
+    public void setTotalTests(String totalTests) {
+        this.totalTests = totalTests;
     }
-
-    public int getDay() {
-        return this.day;
-    }
-
-    public void setDay(int day) {
-        this.day = day;
-    }
-
-    @Override
-    public String toString() {
-        return "{" +
-            " id='" + getId() + "'" +
-            ", name='" + getName() + "'" +
-            ", continent='" + getContinent() + "'" +
-            ", population='" + getPopulation() + "'" +
-            ", newCases='" + getNewCases() + "'" +
-            ", activeCases='" + getActiveCases() + "'" +
-            ", recoveredCases='" + getRecoveredCases() + "'" +
-            ", totalCases='" + getTotalCases() + "'" +
-            ", newDeaths='" + getNewDeaths() + "'" +
-            ", totalDeaths='" + getTotalDeaths() + "'" +
-            ", tests='" + getTests() + "'" +
-            ", day='" + getDay() + "'" +
-            "}";
-    }
-
 }
