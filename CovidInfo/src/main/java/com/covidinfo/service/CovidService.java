@@ -119,9 +119,7 @@ public class CovidService {
                 JSONObject jsnTests = jsn.getJSONObject("tests");
                 JSONObject jsnCases = jsn.getJSONObject("cases");
                 JSONObject jsnDeaths = jsn.getJSONObject("deaths");
-                if (!jsn.get("country").toString().equals(name)) {
-                    System.err.println("Not Found");
-                } else {
+                if (jsn.get("country").toString().equals(name)) {
                     System.out.println("Found");
                     c.setName(name);
                     c.setNewCases(jsnCases.get("new").toString());
