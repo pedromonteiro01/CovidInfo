@@ -102,4 +102,19 @@ public class Country {
     public void setTotalTests(String totalTests) {
         this.totalTests = totalTests;
     }
+
+    @Override
+    public String toString() {
+        return "{" +
+            ", name='" + getName() + "'" +
+            ", newCases='" + getNewCases() + "'" +
+            ", activeCases='" + getActiveCases() + "'" +
+            ", recoveredCases='" + getRecoveredCases() + "'" +
+            ", totalCases='" + getTotalCases() + "'" +
+            ", newDeaths='" + getNewDeaths() + "'" +
+            ", totalDeaths='" + getTotalDeaths() + "'" +
+            ", totalTests='" + getTotalTests() + "'" +
+            "}";
+    }
+
 }

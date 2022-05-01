@@ -37,12 +37,12 @@ public class CovidController {
     }
 
     @GetMapping("/countries/{name}")
-    public ArrayList<Country> getCityByName(@PathVariable(value = "name") String name) throws IOException, URISyntaxException, InterruptedException {
+    public Country getCityByName(@PathVariable(value = "name") String name) throws IOException, URISyntaxException, InterruptedException {
         return CovidService.getCountryByName(name);
     }
 
     @GetMapping("/cache")
-    public String getCacheDetails() {
-        return "Cache";
+    public HashMap<String, Integer> getCacheDetails() {
+        return CovidService.getCacheDetails();
     }
 }

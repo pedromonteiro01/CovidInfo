@@ -44,6 +44,17 @@ public class Cache {
         cacheMap.put(key, value);
     }
 
+    public Country getCountryFromCache(String key) {
+        if (cacheMap.containsKey(key)) {
+            setHits();
+            setRequests();
+            return cacheMap.get(key);
+        }
+        setHits();
+        setMisses();
+        return null;
+    }
+
     public void TimerCache(String obj){
         new java.util.Timer().schedule(
                 new java.util.TimerTask() {
