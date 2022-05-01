@@ -6,9 +6,11 @@ import com.covidinfo.entity.Country;
 
 public class Cache {
 
-    private int hits, misses, requests, cleanTime = 0;
-
     public HashMap<String, Country> cacheMap = new HashMap<>();
+    private int hits = 0;
+    private int misses = 0;
+    private int requests = 0;
+    private int cleanTime = 0;
 
     public Cache(int cleanTime) {
         this.cleanTime = cleanTime;
@@ -36,6 +38,10 @@ public class Cache {
 
     public void setRequests() {
         this.requests +=1;
+    }
+
+    public void addToCache(String key, Country value) {
+        cacheMap.put(key, value);
     }
 
     public void TimerCache(String obj){

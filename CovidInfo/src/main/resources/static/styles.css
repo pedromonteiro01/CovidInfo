@@ -125,7 +125,7 @@ body {
     width: 100%;
 }
 
-.search-covid-box-select, .search-covid-box-coord {
+.search-covid-box-select, .search-covid-box-coord, .cache-statistics {
     animation: fadeIn 3s;
     margin: 5rem 0;
     height: 20rem;
@@ -140,7 +140,7 @@ body {
     align-items: center;
 }
 
-.search-covid-box-select h2, .search-covid-box-coord h2{
+.search-covid-box-select h2, .search-covid-box-coord h2, .cache-statistics h2{
     color: #012970;
 }
 
@@ -151,7 +151,7 @@ body {
     background-color: #fff;
 }
 
-.search-covid-box-select button, .search-covid-box-coord button {
+.search-covid-box-select button, .search-covid-box-coord button, .cache-statistics button {
     height: 2rem;
     width: 5rem;
     background-color: #fff;
@@ -160,7 +160,7 @@ body {
     margin: 2rem 0;
 }
 
-.search-covid-box-select button:hover,  .search-covid-box-coord button:hover {
+.search-covid-box-select button:hover,  .search-covid-box-coord button:hover, .cache-statistics button:hover {
     cursor: pointer;
     color: white;
     background-color: #012970;
@@ -175,12 +175,12 @@ body {
     width: 100%;
 }
 
-.covid-data ul, .covid-data2 ul  {
+.covid-data ul, .covid-data2 ul, .cache ul {
     display: flex;
     justify-content: center;
 }
 
-.covid-data ul li, .covid-data2 ul li {
+.covid-data ul li, .covid-data2 ul li, .cache ul li {
     width: 8rem;
     height: 5rem;
     list-style: none;
@@ -192,7 +192,15 @@ body {
     box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
 }
 
-.covid-data ul li span, .covid-data2 ul li span {
+.cache ul li {
+    height: 4.3rem;
+}
+
+.cache ul li:nth-child(2) {
+    margin: 0 0.5rem;
+}
+
+.covid-data ul li span, .covid-data2 ul li span, .cache ul li span {
     align-items: flex-end;
 }
 

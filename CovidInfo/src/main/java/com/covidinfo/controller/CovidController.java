@@ -3,6 +3,7 @@ package com.covidinfo.controller;
 import java.io.IOException;
 import java.net.URISyntaxException;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 import com.covidinfo.entity.Country;
 import com.covidinfo.service.CovidService;
@@ -38,5 +39,10 @@ public class CovidController {
     @GetMapping("/countries/{name}")
     public ArrayList<Country> getCityByName(@PathVariable(value = "name") String name) throws IOException, URISyntaxException, InterruptedException {
         return CovidService.getCountryByName(name);
+    }
+
+    @GetMapping("/cache")
+    public String getCacheDetails() {
+        return "Cache";
     }
 }

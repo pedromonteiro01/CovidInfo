@@ -1,21 +1,20 @@
 package com.covidinfo.controller;
 
+import java.io.IOException;
+import java.util.ArrayList;
+
+import static org.mockito.Mockito.when;
+
 import com.covidinfo.entity.Country;
 import com.covidinfo.service.CovidService;
-import com.github.dockerjava.core.MediaType;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.test.web.servlet.MockMvc;
-import org.springframework.web.bind.annotation.RestController;
-import static org.hamcrest.CoreMatchers.is;
 
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
-
-@WebMvcTest(RestController.class)
+@WebMvcTest
 public class ControllerTest {
     @Autowired
     private MockMvc mvc;
@@ -23,15 +22,13 @@ public class ControllerTest {
     @MockBean
     private CovidService covidService;
 
-    /*
-            this.name = name;
-        this.newCases = newCases;
-        this.activeCases = activeCases;
-        this.recoveredCases = recoveredCases;
-        this.totalCases = totalCases;
-        this.newDeaths = newDeaths;
-        this.totalDeaths = totalDeaths;
-        this.totalTests = totalTests;
-    */
-    
+    @Test
+    public void testCarCreate() throws IOException, Exception {
+        ArrayList<Country> countries = new ArrayList<>();
+        Country c1 = new Country("CountryTest", "3", "631263", "1000", "1500000", "0", "37121", "231231");
+        Country c2 = new Country("CountryTest", "3", "631263", "1000", "1500000", "0", "37121", "231231");
+        
+        countries.add(c1);
+        countries.add(c2);
+    }
 }
