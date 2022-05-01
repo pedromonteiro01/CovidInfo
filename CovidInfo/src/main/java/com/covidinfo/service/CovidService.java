@@ -24,7 +24,7 @@ public class CovidService {
     private static Cache cacheMap = new Cache();
     private static Logger logger = LogManager.getLogger(CovidService.class);
 
-    public static String getCovidData() throws IOException, InterruptedException {
+    public String getCovidData() throws IOException, InterruptedException {
         HttpRequest request = HttpRequest.newBuilder()
 		.uri(URI.create("https://covid-193.p.rapidapi.com/statistics"))
 		.header("X-RapidAPI-Host", "covid-193.p.rapidapi.com")
@@ -43,7 +43,7 @@ public class CovidService {
         return jsonArray.toString();
     }
 
-    public static ArrayList<String> getCountries() throws IOException, InterruptedException {
+    public ArrayList<String> getCountries() throws IOException, InterruptedException {
         HttpRequest request = HttpRequest.newBuilder()
 		.uri(URI.create("https://covid-193.p.rapidapi.com/statistics"))
 		.header("X-RapidAPI-Host", "covid-193.p.rapidapi.com")
@@ -70,7 +70,7 @@ public class CovidService {
         return countries;
     }
 
-    public static ArrayList<Country> getCountriesData() throws IOException, InterruptedException {
+    public ArrayList<Country> getCountriesData() throws IOException, InterruptedException {
         HttpRequest request = HttpRequest.newBuilder()
 		.uri(URI.create("https://covid-193.p.rapidapi.com/statistics"))
 		.header("X-RapidAPI-Host", "covid-193.p.rapidapi.com")
@@ -110,7 +110,7 @@ public class CovidService {
         return covidDataCountry;
     }
 
-    public static Country getCountryByName(String name) throws IOException, InterruptedException {
+    public Country getCountryByName(String name) throws IOException, InterruptedException {
         HttpRequest request = HttpRequest.newBuilder()
 		.uri(URI.create("https://covid-193.p.rapidapi.com/statistics"))
 		.header("X-RapidAPI-Host", "covid-193.p.rapidapi.com")
@@ -161,7 +161,7 @@ public class CovidService {
         return new Country("Not Available");
     }
 
-    public static HashMap<String, Integer> getCacheDetails() {
+    public HashMap<String, Integer> getCacheDetails() {
         HashMap<String, Integer> cacheDetails = new HashMap<>();
         cacheDetails.put("hits", cacheMap.getHits());
         cacheDetails.put("misses", cacheMap.getMisses());
