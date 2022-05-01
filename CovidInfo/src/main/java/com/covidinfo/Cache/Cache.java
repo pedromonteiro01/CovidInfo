@@ -50,8 +50,8 @@ public class Cache {
             setRequests();
             return cacheMap.get(key);
         }
-        setHits();
         setMisses();
+        setRequests();
         return null;
     }
 
@@ -66,5 +66,17 @@ public class Cache {
                 120000 // stays in cache for 2 minutes
                 
         );
+    }
+
+    public int getCacheSize() {
+        return cacheMap.size();
+    }
+
+    public boolean containsItem(String key) {
+        return cacheMap.containsKey(key);
+    }
+
+    public void clearCache() {
+        cacheMap.clear();
     }
 }

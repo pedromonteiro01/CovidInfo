@@ -11,11 +11,4 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 public class ServiceTest {
-    @DisplayName("Test getCountryByName()")
-    @Test
-    void testGetCountryByNameWhenCountryNotExists() throws IOException, InterruptedException {
-        ArrayList<Country> emptyArray = new ArrayList<>();
-        // when looking for country 'x' must returns an empty array
-        assertEquals(emptyArray, CovidService.getCountryByName("x"));
-    }
 }
