@@ -18,7 +18,7 @@ import org.springframework.stereotype.Service;
 @Service
 public class CovidService {
 
-    private static Cache cacheMap = new Cache(60);
+    private static Cache cacheMap = new Cache();
 
     public static String getCovidData() throws IOException, InterruptedException {
         HttpRequest request = HttpRequest.newBuilder()
@@ -140,6 +140,7 @@ public class CovidService {
                 c.setTotalDeaths(jsnDeaths.get("total").toString());
                 c.setTotalTests(jsnTests.get("total").toString());
                 cacheMap.addToCache(name, c);
+                cacheMap.cacheTimer(name, 120000);
                 return c;
             }
         }

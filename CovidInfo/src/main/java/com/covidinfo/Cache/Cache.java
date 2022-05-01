@@ -10,10 +10,8 @@ public class Cache {
     private int hits = 0;
     private int misses = 0;
     private int requests = 0;
-    private int cleanTime = 0;
 
-    public Cache(int cleanTime) {
-        this.cleanTime = cleanTime;
+    public Cache() {
     }
 
     public int getHits() {
@@ -45,7 +43,7 @@ public class Cache {
     }
 
     public Country getCountryFromCache(String key) {
-        if (cacheMap.containsKey(key)) {
+        if (cacheMap.containsKey(key)) { // if item in cache return item, else increase number of misses
             setHits();
             setRequests();
             return cacheMap.get(key);
@@ -55,28 +53,28 @@ public class Cache {
         return null;
     }
 
-    public void TimerCache(String obj){
-        new java.util.Timer().schedule(
-                new java.util.TimerTask() {
-                    @Override
-                    public void run() {
-                        cacheMap.remove(obj);
-                    }
-                },
-                120000 // stays in cache for 2 minutes
-                
-        );
-    }
-
     public int getCacheSize() {
         return cacheMap.size();
     }
 
+    // if country is in cache, then return it
     public boolean containsItem(String key) {
         return cacheMap.containsKey(key);
     }
 
     public void clearCache() {
         cacheMap.clear();
+    }
+
+    public void cacheTimer(String key, int timeToLive){
+        new java.util.Timer().schedule(
+                new java.util.TimerTask() {
+                    @Override
+                    public void run() {
+                        cacheMap.remove(key);
+                    }
+                },
+                timeToLive // item stays in cache for 2 minutes (120000ms) 
+        );
     }
 }

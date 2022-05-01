@@ -14,7 +14,7 @@ public class CacheTest {
 
     @BeforeEach
     void setUp() {
-        cache = new Cache(20);
+        cache = new Cache();
     }
 
     @AfterEach
@@ -40,5 +40,14 @@ public class CacheTest {
         assertEquals(2, cache.getHits());
         assertEquals(1, cache.getMisses());
         assertEquals(3, cache.getRequests());
+    }
+
+    @Test
+    void cleanAfterTimeTest() throws InterruptedException {
+        Country c1 = new Country("c1");
+        cache.addToCache("c1", c1);
+        cache.cacheTimer("c1", 5);
+        Thread.sleep(10); // wait for item to be removed
+        assertEquals(0, this.cache.getCacheSize());
     }
 }
