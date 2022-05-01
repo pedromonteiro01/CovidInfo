@@ -14,35 +14,44 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+
 @RestController
 @RequestMapping("/api/v1")
 public class CovidController {
+    private static Logger logger = LogManager.getLogger(CovidController.class);
     
     @GetMapping("/")
     @ResponseBody
     public String getData() throws IOException, InterruptedException {
+        logger.info("Getting all data from API");
         return CovidService.getCovidData();
     }
 
     @GetMapping("/countries")
     @ResponseBody
     public ArrayList<String> getCountries() throws IOException, InterruptedException {
+        logger.info("Getting all countries from API");
         return CovidService.getCountries();
     }
 
     @GetMapping("/countries/data")
     @ResponseBody
     public ArrayList<Country> getTestsByCountries() throws IOException, InterruptedException {
+        logger.info("Getting all data about countries from API");
         return CovidService.getCountriesData();
     }
 
     @GetMapping("/countries/{name}")
     public Country getCityByName(@PathVariable(value = "name") String name) throws IOException, URISyntaxException, InterruptedException {
+        logger.info("Getting data about {} from API", name);
         return CovidService.getCountryByName(name);
     }
 
     @GetMapping("/cache")
     public HashMap<String, Integer> getCacheDetails() {
+        logger.info("Getting cache details");
         return CovidService.getCacheDetails();
     }
 }

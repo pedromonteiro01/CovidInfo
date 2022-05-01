@@ -4,8 +4,12 @@ import java.util.HashMap;
 
 import com.covidinfo.entity.Country;
 
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+
 public class Cache {
 
+    private static Logger logger = LogManager.getLogger(Cache.class);
     public HashMap<String, Country> cacheMap = new HashMap<>();
     private int hits = 0;
     private int misses = 0;
@@ -46,10 +50,12 @@ public class Cache {
         if (cacheMap.containsKey(key)) { // if item in cache return item, else increase number of misses
             setHits();
             setRequests();
+            logger.info("Get {} from cache: +1 hit +1 request", key);
             return cacheMap.get(key);
         }
         setMisses();
         setRequests();
+        logger.info("{} not in cache: +1 miss +1 request", key);
         return null;
     }
 
@@ -67,6 +73,7 @@ public class Cache {
     }
 
     public void cacheTimer(String key, int timeToLive){
+        logger.info("Deleting item from cache in {}ms", timeToLive);
         new java.util.Timer().schedule(
                 new java.util.TimerTask() {
                     @Override
@@ -74,7 +81,7 @@ public class Cache {
                         cacheMap.remove(key);
                     }
                 },
-                timeToLive // item stays in cache for 2 minutes (120000ms) 
+                timeToLive
         );
     }
 }
