@@ -1,8 +1,8 @@
 package com.covidinfo.service;
 
 import java.io.IOException;
-import java.util.ArrayList;
 
+import com.covidinfo.Cache.Cache;
 import com.covidinfo.entity.Country;
 import com.covidinfo.repository.CountryRepository;
 
@@ -21,22 +21,23 @@ public class ServiceTest {
     @Mock(lenient=true)
     private CountryRepository countryRepository;
 
+    @Mock
+    private Cache cache;
+
     @InjectMocks
     private CovidService covidService;
 
     @BeforeEach
     void setUp() throws IOException, InterruptedException {
+        cache = new Cache();
         this.covidService = new CovidService();
         Country c1 = new Country("c1", "3", "631263", "1000", "1500000", "0", "37121", "231231");
         Country c2 = new Country("c2", "23", "423423", "123", "12414144", "0", "37121", "231231");
-
-        ArrayList<Country> countries = new ArrayList<>();
-        countries.add(c1);
-        countries.add(c2);
-
+        cache.addToCache("c1", c1);
+        cache.addToCache("c2", c2);
+    
         when(countryRepository.findByName(c1.getName())).thenReturn(c1);
         when(countryRepository.findByName(c2.getName())).thenReturn(c2);
-        when(countryRepository.findAll()).thenReturn(countries);
     }
 
     @AfterEach
@@ -46,8 +47,11 @@ public class ServiceTest {
     @Test
     void countryTest() throws IOException, InterruptedException {
         String countryName = "c1";
-        Country foundC1 = covidService.getCountryByName("c1");
+        int newCases = Integer.parseInt("3");
+        int newDeaths = Integer.parseInt("0");
+        Country foundC1 = cache.getCountryFromCache("c1");
         assertThat(foundC1.getName()).isEqualTo(countryName);
-        assertThat(foundC1.getNewCases()).isEqualTo("3");
+        assertThat(Integer.parseInt(foundC1.getNewCases())).isEqualTo(newCases);
+        assertThat(Integer.parseInt(foundC1.getNewDeaths())).isEqualTo(newDeaths);
     }
 }

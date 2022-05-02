@@ -120,7 +120,7 @@ public class CovidService {
         HttpResponse<String> response = HttpClient.newHttpClient().send(request, HttpResponse.BodyHandlers.ofString());
 
         JSONObject jsonObject = new JSONObject(response.body().toString());
-
+        
         Country countryFromCache = cacheMap.getCountryFromCache(name);
 
         if (jsonObject.get("response").toString() == null) {
@@ -158,7 +158,6 @@ public class CovidService {
         }
         
         logger.error("Country not available...");
-        System.out.println("\n\n ERROR \n\n");
         return new Country("Not Available");
     }
     }
