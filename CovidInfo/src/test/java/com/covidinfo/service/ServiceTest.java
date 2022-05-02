@@ -10,7 +10,6 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
-import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 import static org.mockito.Mockito.when;
@@ -24,13 +23,9 @@ public class ServiceTest {
     @Mock
     private Cache cache;
 
-    @InjectMocks
-    private CovidService covidService;
-
     @BeforeEach
     void setUp() throws IOException, InterruptedException {
         cache = new Cache();
-        this.covidService = new CovidService();
         Country c1 = new Country("c1", "3", "631263", "1000", "1500000", "0", "37121", "231231");
         Country c2 = new Country("c2", "23", "423423", "123", "12414144", "0", "37121", "231231");
         cache.addToCache("c1", c1);
@@ -45,7 +40,7 @@ public class ServiceTest {
     }
 
     @Test
-    void countryTest() throws IOException, InterruptedException {
+    void getCountryTest() throws IOException, InterruptedException {
         String countryName = "c1";
         int newCases = Integer.parseInt("3");
         int newDeaths = Integer.parseInt("0");
@@ -53,5 +48,12 @@ public class ServiceTest {
         assertThat(foundC1.getName()).isEqualTo(countryName);
         assertThat(Integer.parseInt(foundC1.getNewCases())).isEqualTo(newCases);
         assertThat(Integer.parseInt(foundC1.getNewDeaths())).isEqualTo(newDeaths);
+    }
+
+    @Test
+    void getInvalidCountryTest() throws IOException, InterruptedException {
+        String invalidCountry = "Not Available";
+        Country foundC1 = cache.getCountryFromCache("abc");
+        assertThat(foundC1.getName()).isEqualTo(invalidCountry);
     }
 }
