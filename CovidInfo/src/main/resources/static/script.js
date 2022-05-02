@@ -50,13 +50,40 @@ function getData() {
           var stringifiedData = JSON.stringify(data);
           var parsedData = JSON.parse(stringifiedData);
 
-          newCases.innerHTML = parsedData.newCases;
-          activeCases.innerHTML = parsedData.activeCases;
-          recoveredCases.innerHTML = parsedData.recoveredCases;
-          totalCases.innerHTML = parsedData.totalCases;
-          deaths.innerHTML = parsedData.newDeaths;
-          totalDeaths.innerHTML = parsedData.totalDeaths;
-          tests.innerHTML = parsedData.totalTests;
+          if (parsedData.newCases === 'null')
+            newCases.innerHTML = "0";
+          else
+            newCases.innerHTML = parsedData.newCases;
+          
+          if (parsedData.activeCases === 'null')
+            activeCases.innerHTML = "0";
+          else
+            activeCases.innerHTML = parsedData.activeCases;
+          
+          if (parsedData.recoveredCases === 'null')
+            recoveredCases.innerHTML = "0";
+          else
+            recoveredCases.innerHTML = parsedData.recoveredCases;
+          
+          if (parsedData.totalCases === 'null')
+            totalCases.innerHTML = "0";
+          else
+            totalCases.innerHTML = parsedData.totalCases;
+
+          if (parsedData.totalDeaths === 'null')
+            deaths.innerHTML = "0";
+          else
+            deaths.innerHTML = parsedData.totalDeaths;
+          
+          if (parsedData.totalDeaths === 'null')
+            totalDeaths.innerHTML = "0";
+          else
+            totalDeaths.innerHTML = parsedData.totalDeaths;
+
+          if (parsedData.totalTests === 'null')
+            tests.innerHTML = "0";
+          else
+            tests.innerHTML = parsedData.totalTests;
   });
 }
 
@@ -89,13 +116,40 @@ function getData2() {
             document.getElementById("covid-data2").style.display = "block";
             document.getElementById("country-fail").style.display = "none";
           }
-          newCases.innerHTML = data.newCases;
-          activeCases.innerHTML = data.activeCases;
-          recoveredCases.innerHTML = data.recoveredCases;
-          totalCases.innerHTML = data.totalCases;
-          deaths.innerHTML = data.newDeaths;
-          totalDeaths.innerHTML = data.totalDeaths;
-          tests.innerHTML = data.totalTests;
+          if (data.newCases === 'null')
+            newCases.innerHTML = "0";
+          else
+            newCases.innerHTML = data.newCases;
+          
+          if (data.activeCases === 'null')
+            activeCases.innerHTML = "0";
+          else
+            activeCases.innerHTML = data.activeCases;
+          
+          if (data.recoveredCases === 'null')
+            recoveredCases.innerHTML = "0";
+          else
+            recoveredCases.innerHTML = data.recoveredCases;
+          
+          if (data.totalCases === 'null')
+            totalCases.innerHTML = "0";
+          else
+            totalCases.innerHTML = data.totalCases;
+
+          if (data.totalDeaths === 'null')
+            deaths.innerHTML = "0";
+          else
+            deaths.innerHTML = data.totalDeaths;
+          
+          if (data.totalDeaths === 'null')
+            totalDeaths.innerHTML = "0";
+          else
+            totalDeaths.innerHTML = data.totalDeaths;
+
+          if (data.totalTests === 'null')
+            tests.innerHTML = "0";
+          else
+            tests.innerHTML = data.totalTests;
   });
 }
 
@@ -112,6 +166,7 @@ function getCache() {
         .then(response => response.json()).then( json => setData(json))
         .catch(error => console.error(error))
         .finally(() => {
+          document.getElementById("cache").style.display = "block";
           var hits = document.getElementById('hits');
           var misses = document.getElementById('misses');
           var requests = document.getElementById('requests');
