@@ -56,7 +56,7 @@ public class Cache {
         setMisses();
         setRequests();
         logger.info("{} not in cache: +1 miss +1 request", key);
-        return new Country("Not Available");
+        return null;
     }
 
     public int getCacheSize() {

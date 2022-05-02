@@ -52,8 +52,7 @@ public class ServiceTest {
 
     @Test
     void getInvalidCountryTest() throws IOException, InterruptedException {
-        String invalidCountry = "Not Available";
         Country foundC1 = cache.getCountryFromCache("abc");
-        assertThat(foundC1.getName()).isEqualTo(invalidCountry);
+        assertThat(foundC1).isEqualTo(null);
     }
 }

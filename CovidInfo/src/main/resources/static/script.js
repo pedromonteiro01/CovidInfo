@@ -40,7 +40,6 @@ function getData() {
         .finally(() => {
           document.getElementById("covid-data").style.display = "block";
           var selectElement = document.getElementById('ageselect');
-          var country = selectElement.value;
           var newCases = document.getElementById('new-cases');
           var activeCases = document.getElementById('active-cases');
           var recoveredCases = document.getElementById('recovered-cases');
@@ -50,19 +49,14 @@ function getData() {
           var tests = document.getElementById('tests');
           var stringifiedData = JSON.stringify(data);
           var parsedData = JSON.parse(stringifiedData);
-          const length = Object.keys(parsedData).length;
-  
-          for (var i = 0; i < length; ++i) {
-            var c1 = JSON.stringify(parsedData[i]);
-            c2 = JSON.parse(c1);
-            newCases.innerHTML = c2.newCases.toString();
-            activeCases.innerHTML = c2.activeCases;
-            recoveredCases.innerHTML = c2.recoveredCases;
-            totalCases.innerHTML = c2.totalCases;
-            deaths.innerHTML = c2.newDeaths;
-            totalDeaths.innerHTML = c2.totalDeaths;
-            tests.innerHTML = c2.totalTests;
-          }
+
+          newCases.innerHTML = parsedData.newCases;
+          activeCases.innerHTML = parsedData.activeCases;
+          recoveredCases.innerHTML = parsedData.recoveredCases;
+          totalCases.innerHTML = parsedData.totalCases;
+          deaths.innerHTML = parsedData.newDeaths;
+          totalDeaths.innerHTML = parsedData.totalDeaths;
+          tests.innerHTML = parsedData.totalTests;
   });
 }
 
