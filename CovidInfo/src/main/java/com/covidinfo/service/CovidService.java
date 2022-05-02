@@ -123,20 +123,19 @@ public class CovidService {
 
         Country countryFromCache = cacheMap.getCountryFromCache(name);
 
-        // if country exists in cache then return it
-        if (countryFromCache != null) {
-            logger.info("Get {} from Cache", countryFromCache);
-            return countryFromCache;
-        }
-
         if (jsonObject.get("response").toString() == null) {
             logger.error("Error when getting response from API...");
             return null;
         }
 
-        Country c = new Country();
-        JSONArray jsonArray = new JSONArray(jsonObject.get("response").toString());
-        for (int i = 0; i < jsonArray.length(); ++i) {
+        // if country exists in cache then return it
+        if (countryFromCache != null) {
+            logger.info("Get {} from Cache", countryFromCache);
+            return countryFromCache;
+        } else {
+            Country c = new Country();
+            JSONArray jsonArray = new JSONArray(jsonObject.get("response").toString());
+            for (int i = 0; i < jsonArray.length(); ++i) {
             JSONObject jsn = jsonArray.getJSONObject(i);
             JSONObject jsnTests = jsn.getJSONObject("tests");
             JSONObject jsnCases = jsn.getJSONObject("cases");
@@ -157,8 +156,11 @@ public class CovidService {
                 return c;
             }
         }
+        
         logger.error("Country not available...");
+        System.out.println("\n\n ERROR \n\n");
         return new Country("Not Available");
+    }
     }
 
     public HashMap<String, Integer> getCacheDetails() {
